@@ -1,0 +1,100 @@
+
+Record   0
+namSiz:  14
+name:    homer simpson
+emaiSiz: 15
+email:   homer@simp.com
+pwrdSiz: 9
+pwrd:    Homer!23
+hiScore: 000
+
+Record   1
+namSiz:  14
+name:    marge simpson
+emaiSiz: 15
+email:   marge@simp.com
+pwrdSiz: 9
+pwrd:    Marge!23
+hiScore: 000
+
+Record   2
+namSiz:  13
+name:    lisa simpson
+emaiSiz: 14
+email:   lisa@simp.com
+pwrdSiz: 10
+pwrd:    Lisa!2345
+hiScore: 000
+
+Record   3
+namSiz:  12
+name:    day tripper
+emaiSiz: 17
+email:   lucy@beatles.com
+pwrdSiz: 10
+pwrd:    DayT#2345
+hiScore: 000
+
+Record   4
+namSiz:  13
+name:    harry potter
+emaiSiz: 17
+email:   harry@potter.com
+pwrdSiz: 9
+pwrd:    Hp!12345
+hiScore: 000
+
+Record   5
+namSiz:  8
+name:    Rhianna
+emaiSiz: 14
+email:   rhi@email.com
+pwrdSiz: 10
+pwrd:    Rhianna#1
+hiScore: 000
+
+Record   6
+namSiz:  17
+name:    hamburger helper
+emaiSiz: 19
+email:   hamburger@help.com
+pwrdSiz: 9
+pwrd:    Help!234
+hiScore: 000
+
+Record   7
+namSiz:  13
+name:    taylor swift
+emaiSiz: 17
+email:   taylor@swift.com
+pwrdSiz: 10
+pwrd:    Taylor$35
+hiScore: 000
+
+Record   8
+namSiz:  13
+name:    adam sandler
+emaiSiz: 17
+email:   adam@sandler.com
+pwrdSiz: 9
+pwrd:    Adam!567
+hiScore: 000
+
+Record   9
+namSiz:  16
+name:    wednesday adams
+emaiSiz: 14
+email:   wed@adams.com
+pwrdSiz: 11
+pwrd:    Wednesday1!
+hiScore: 
+Record   10
+namSiz:  8
+name:    danielle
+emaiSiz: 21
+email:   danielle@danielle.com
+pwrdSiz: 11
+pwrd:    Danielle!23
+hiScore: 039
+
+00
