@@ -1,6 +1,6 @@
 namSiz:  5
 name:    admin
-emaiSiz: 14
-email:   admin@info.com
+emaiSiz: 15
+email:   admin@admin.com
 pwrdSiz: 8
-pwrd:    Pass!234
+pwrd:    Admin!23

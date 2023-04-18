@@ -24,7 +24,7 @@ emaiSiz: 13
 email:   lisa@simp.com
 pwrdSiz: 9
 pwrd:    Lisa!2345
-hiScore: 090
+hiScore: 000
 
 Record   3
 namSiz:  11
@@ -42,4 +42,4 @@ emaiSiz: 16
 email:   harry@potter.com
 pwrdSiz: 8
 pwrd:    Harry!23
-hiScore: 012
+hiScore: 000

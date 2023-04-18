@@ -260,8 +260,9 @@ bool User::isName(){
     string n = "";
     
     // Loop until a valid name is entered
+    cin.ignore();
     do {
-        cout<<"\nEnter your name. Must be at least 2 characters: ";
+        cout<<"\nEnter your name. Minimum 2 characters:\n";
         getline(cin,n);
         
         // Set flag. Confirm name is at least 2 characters long

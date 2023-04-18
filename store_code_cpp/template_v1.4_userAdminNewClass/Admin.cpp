@@ -92,23 +92,24 @@ int Admin::isUsrLogin(){
     
     cout<<"\n\n\tUser Login\n";
 
-    //cout<<"\n\n*****Reset strings after testing*****\nlisa@simp.com\nLisa!2345\n";
-    string tempE= "lisa@simp.com", tempPw="Lisa!2345";
-    //string tempE = "", tempPw = "";
+    int num = rand()%(0+totalRec);
+    cout<<"\n\n*****Hide this after testing*****\n"<< usrArr[num]->user.getEmail()<<"\n"<< usrArr[num]->user.getPwrd()<<"\n*********************************\n";
+    //string tempE = usrArr[num]->user.getEmail(), tempPw =usrArr[num]->user.getPwrd(); // use for testing when you don't want to type it in each time
+    string tempE = "", tempPw = "";
     bool isName = false, isPwrd = false;
     
-    //do {
-        //cout<<"\nEmail is case sensitive. Must use lowercase letters.\n";
+    cout<<"\nEmail is case sensitive. Must use lowercase letters.\n";
+    do {
         cout<<"Enter email:    ";
-        //cin >> tempE;
-    //} while(!(user.isMinSize(tempE,8)) || !(user.confrmEmail(tempE)));
+        cin >> tempE;
+    } while(!(user.isMinSize(tempE,8)) || !(user.confrmEmail(tempE)));
     //cout<<tempE<<endl;
                 
-    //do{
+    do{
         cout<<"Enter password: ";
-        //cin >> tempPw;       
-    //} while(!(user.isMinSize(tempPw,7)));
-    //cin.ignore();
+        cin >> tempPw;       
+    } while(!(user.isMinSize(tempPw,7)));
+    cin.ignore();
     //cout<<tempPw;
        
     // look for this email in usrBin.dat. If it exists, then
@@ -146,12 +147,12 @@ void Admin::adminLogin(){
     bool isName = false,
          isPwrd = false;
     
-    readAdBin();  // Reset user array with records read in from binary file
+    readAdBin();  // Reset user array with latest records read in from binary file
     //print1Admin();
    
     //*************************************************************************
     // This section is for testing. Comment it after all testing is finished
-    cout<<"******************************\n";
+    cout<<"\n******************************\nHide this after testing\n";
     cout<< user.getName() << endl << user.getPwrd() << endl;
     cout<<"******************************\n";
     
@@ -162,13 +163,13 @@ void Admin::adminLogin(){
     
     do{        
         cout<<"\nEnter username: \n";
-        //cin >> tempNam;
+        cin >> tempNam;
         isName = user.isMinSize(tempNam,2);
     } while(!isName);
     
     cout<<"Enter password: \n";
-    //cin >> tempPwrd;   
-    //cin.ignore();
+    cin >> tempPwrd;   
+    cin.ignore();
     
     isName = user.isStrEqual(user.getName(),tempNam);
     isPwrd = user.isStrEqual(user.getPwrd(),tempPwrd);

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=template_v1.3_updateWithYaht_v28.2
+PROJECTNAME=template_v1.4_userAdminNewClass
 
 # Active Configuration
 DEFAULTCONF=Debug
