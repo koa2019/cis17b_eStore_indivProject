@@ -5,12 +5,10 @@
 
 #ifndef ADMIN_H
 #define ADMIN_H
-//#include <string>   // string var
-//#include <iostream> // convert int to string type
-//#include <iomanip> // setprecision()
 #include <fstream>
 #include "User.h"   // Admin aggregates instance of User
 #include "Cart.h"
+#include "Store.h"
 using namespace std;  //STD Name-space where Library is compiled
 
 class Admin {
@@ -22,7 +20,8 @@ private:
     long begnFile;            // Beginning bit location of this file in binary
     User user;                // Admin aggregates instance of User
     Admin **usrArr = nullptr;    
-    Cart itemHistory;
+    Cart itemStats;
+    Store store;
     
 public:
     
@@ -35,10 +34,12 @@ public:
     
     // Cart Class functions
     void editCart();          // Reassign cart[] in User and rewrite in binary & text files
-    void setItemHist();        // Accumulate the voting results for each item in survey
-    void printItemHist();      // Prints total purchases ever made
+    void setItemStats();        // Accumulate the voting results for each item in survey
+    void printItemStats();      // Prints total purchases ever made
     void getCartArr();        // Prints user's cart[]
     void getChart(int) const; // Prints histogram
+    void getCheckout(int) ; // print user's order
+    
     
     // Mutator
     void setRecSiz(int n){ recSiz = n;}
@@ -46,10 +47,10 @@ public:
     void deleteUsr(); // deletes User in binary file
     
     // Reads & writes Admin binary & text files
+    void readBin_setArray(); // reads User's binary file
     int isUsrLogin();        // Calls functions to verify login credentials
     void adminLogin();  // checks admin login 
     void adminPortal(); // if Admin is logged in, then display menu   
-    void readBin_setArray(); // reads User's binary file
     void readAdBin();   // ReadS binary file & locate file by index
     void wrtAdTxt();    // write to Admin text file
     void wrtAdBin();    // write to Admin binary file

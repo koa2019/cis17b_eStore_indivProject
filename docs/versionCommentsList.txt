@@ -11,3 +11,16 @@ store_v3_itemDblPtr:
  *  Made Survey::Item item[] **item;
  * Printed checkout totals in Survey::start()
 
+store_v4_prntCartAvgInAdmin:
+ *  Calculated & printed every items purchase history in Admin::setItemHist()
+
+store_v5:
+ * Refractored Survey class to Store.
+ * copy2Usr() saved cart[] elements to user2.
+ * Added getCheckout() in Admin. It prints the user's order.
+ * Fixed BUG: Cart::cartTotal not adjusting total when item quantity is updated in store,
+   by creating temp integer array to temporarily saves the user's order until they're
+   ready to checkout.
+ * Added Cart::totalItems.
+ * Set each player's totalItems and cartTotal after binary file is read. Inside of Admin::setItemStats().
+ * Prints percentages in printItemStats().
