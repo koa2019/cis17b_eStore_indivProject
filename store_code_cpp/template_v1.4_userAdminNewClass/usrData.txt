@@ -6,7 +6,7 @@ emaiSiz: 14
 email:   homer@simp.com
 pwrdSiz: 8
 pwrd:    Homer!23
-hiScore: 000
+hiScore: 001
 
 Record   1
 namSiz:  13

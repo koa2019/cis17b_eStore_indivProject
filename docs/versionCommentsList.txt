@@ -1,0 +1,13 @@
+
+
+store_v2:
+ * Is a copy of survey project v6.
+ * Changed Question class to Item class, Votes class to Item class.
+ * Added Item:: float price and nItems = 3 instead of 4. Because I needed a float.
+ * Added Cart::cartTotal
+ * Prints total and total number of items in Survey::start()
+
+store_v3_itemDblPtr:
+ *  Made Survey::Item item[] **item;
+ * Printed checkout totals in Survey::start(), but can't get it to work in a function
+ 

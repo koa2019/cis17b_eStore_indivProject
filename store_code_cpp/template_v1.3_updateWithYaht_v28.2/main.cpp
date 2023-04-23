@@ -30,6 +30,9 @@ Comments:
  * NewClass is meant to show you how'd you rewrite a integer variable, hiScore in
    binary & text files. You can change hiScore or any User member variable as you see fit.
  
+ * This was created on a PC. If you're running it on a mac, then
+   delete the build and dist folders before running it. If that doesn't work, then
+   you'll have to copy and paste each file into a new project in your netbeans
  
  v1.1:
  * This is based off of yahtzee_v24_moveDice2SC.
