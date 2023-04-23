@@ -9,5 +9,5 @@ store_v2:
 
 store_v3_itemDblPtr:
  *  Made Survey::Item item[] **item;
- * Printed checkout totals in Survey::start(), but can't get it to work in a function
- 
+ * Printed checkout totals in Survey::start()
+

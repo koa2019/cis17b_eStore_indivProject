@@ -2,11 +2,10 @@
  * File:    main.cpp
  * Author:  Danielle F
  * Created: 04-13-23 @8PM
- * Purpose: store_v3_itemDblPtr
+ * Purpose: store_v4_prntCartAvgInAdmin
   
- store_v3_itemDblPtr:
- *  Made Survey::Item item[] **item;
- * Printed checkout totals in Survey::start()
+ store_v4_prntCartAvgInAdmin:
+ *  
   
  To Do: 
  * Print Cart averages in Admin
@@ -46,12 +45,12 @@ int main(int argc, char** argv) {
     int choice = 0;
     User user; 
     Admin admin;   
-    
+   
     cout<<"\n\n\tMenu\n"
         <<"1: Admin Login\n"
         <<"2: Sign Up\n"
         <<"3: User Login\n"
-        <<"4: View Survey Chart\n"
+        <<"4: View Purchase Averages\n"
         <<"5: Reset binary & text files\n"
         <<"9: Exit\n"
         <<"Enter a number: ";
@@ -84,8 +83,8 @@ int main(int argc, char** argv) {
                     // Create new User & copy admin values to user                    
                     admin.copy2Usr(user,indx);    
                     cout << "\nWelcome " << user.getName();
-                    //user.printUsr(); 
-                    admin.printAdUsr(user.getNumRec()); 
+                    user.printUsr(); 
+                    //admin.printAdUsr(user.getNumRec()); 
                
                     
                     // Create new instance of NewClass class
@@ -98,9 +97,9 @@ int main(int argc, char** argv) {
                     // if user is winner & has new hiScore, then print their update record
                     if(survey.start(user, recordLoc)) {                         
                         
-                        cout<<"\n\ninside main() user object looks like: ";
-                        user.printUsrRec();                       
-                        admin.printAdUsr(user.getNumRec());   
+                        //cout<<"\n\ninside main() user object looks like: ";
+                        //user.printUsrRec();                       
+                        //admin.printAdUsr(user.getNumRec());   
                           
                         //rewrite this record in binary & text files  
                         user.reWrtBin(recordLoc); 
@@ -108,8 +107,8 @@ int main(int argc, char** argv) {
                         admin.readBin_setArray();
                         cout << "\nAdmin is reading updated binary file....\n";
                         admin.printAdUsr(user.getNumRec());
-                        cout << "Survey Results\n";
-                        admin.getPrntCart();
+                        //cout << "Survey Results\n";
+                        //admin.getCartArr();
                     }                                                    
                 }
                 break;
@@ -117,16 +116,14 @@ int main(int argc, char** argv) {
             case 4: // View the Survey's chart
             {          
                 //cout<<"\tIn main()"; 
-                //admin.printtCart();
-                User guest("Guest");
-                
-                Survey sGuest;
-                if(sGuest.start(guest, 0)) {                         
-                        
-                        cout<<"\n\ninside main() guest object looks like: ";
-                        guest.printUsrRec();   
+                admin.printCartAvg();
+                //User guest("Guest");                
+                //Survey sGuest;
+                //if(sGuest.start(guest, 0)) { 
+                        //cout<<"\n\ninside main() guest object looks like: ";
+                        //guest.printUsrRec();   
                         //guest.getCheckout(); // Print checkout 
-                }
+                //}
                 break;
             }
             case 5:   // Reset files by erasing binary & text file, then creates records in 
