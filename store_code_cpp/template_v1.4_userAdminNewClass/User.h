@@ -1,6 +1,7 @@
 /* File:   User.h
  * Author: DanYell
  * Created: 04-18-23, 12 PM
+  * Purpose:  template_adminUserClass_aggregates. v1.4
 */
 
 #ifndef USER_H
@@ -33,9 +34,6 @@ public:
     
     
     // Mutators
-    void readNumRec();   // Read total number of records from file & set numRec
-    void addNumRec(){ numRec++; } // increment total records by 1
-    void setNumRec(int num) { numRec = num; }
     void setNamSiz(int size){  namSiz = size; }
     void setEmaiSiz(int size){ emaiSiz = size; }
     void setPwrdSiz(int size){ pwrdSiz = size; }
@@ -43,6 +41,14 @@ public:
     void setEmail(string str){ email = str; emaiSiz = email.size(); }
     void setPwrd(string str){  password = str; pwrdSiz = password.size();}
     void setHiScore(int s) { hiScore = s; }
+    
+    // numRec functions
+    void readNumRec();   // Read total number of records from file & set numRec
+    void addNumRec(){ numRec++; } // increment total records by 1
+    void setNumRec(int num) { numRec = num; }
+    void wrtNumRec();    // Write the total number of records in UsrData.bin
+    int getNumRec() const { return numRec;}
+    
     
     // Create new User 
     void signUp();  // Calls functions to create 1 or more profiles
@@ -65,7 +71,7 @@ public:
 
     
     // Write to files
-    void wrtNumRec();    // Write the total number of records in UsrData.bin
+   
     void wrtTxt();
     void wrtBin();
     void reWrtTxt(long);  // Rewrite 1 record in User's text file
@@ -73,7 +79,7 @@ public:
     
     
     // Accessors 
-    int getNumRec() const { return numRec;}
+  
     int getHiScore() const {return hiScore;}
     unsigned short getNamSiz() const {return namSiz; }
     unsigned short getEmaiSiz() const { return emaiSiz; }

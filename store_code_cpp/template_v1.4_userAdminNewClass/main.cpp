@@ -2,7 +2,7 @@
  * File:    main.cpp
  * Author:  Danielle F
  * Created: 04-16-23 @10 PM
- * Purpose:  template_adminUserClass_aggregates. v1.3
+ * Purpose:  template_adminUserClass_aggregates. v1.4
  * 
 Comments: 
  * If it's your first time running this code, select 5 from the menu
@@ -30,6 +30,10 @@ Comments:
  * NewClass is meant to show you how'd you rewrite a integer variable, hiScore in
    binary & text files. You can change hiScore or any User member variable as you see fit.
  
+ * This was created on a PC. If you're running it on a mac, then
+   delete the build and dist folders before running it. If that doesn't work, then
+   you'll have to copy and paste each file into a new project in your netbeans
+
  
  v1.1:
  * This is based off of yahtzee_v24_moveDice2SC.
@@ -67,7 +71,7 @@ using namespace std;  //STD Name-space where Library is compiled
 //Code Begins Execution Here with function main
 int main(int argc, char** argv) {
     
-        //Set random number seed once here
+    //Set random number seed once here
     srand(static_cast<unsigned int>(time(0)));
 
     int choice = 0;
@@ -130,6 +134,8 @@ int main(int argc, char** argv) {
                         //cout<<"\n\ninside main() user object looks like: ";
                         //user.printUsr();                       
                           
+                        // rewrite this record in binary & text files  
+                        user.reWrtBin(recordLoc); 
                         admin.readAllUsrs();
                         cout << "\nAdmin is reading updated binary file....\n";
                         admin.printAdUsr(user.getNumRec());   

@@ -4,7 +4,6 @@
 #include <bits/stdc++.h>  // vectors pc
 #include "NewClass.h"
 #include "User.h"       // aggregates instance of User class
-
 using namespace std;
 
 //**********************************************************
@@ -49,8 +48,8 @@ bool NewClass::start(User &user, const long recordLoc){
     }
     else { 
         
-        // rewrite this record in binary & text files  
-        user.reWrtBin(recordLoc); 
+//        // rewrite this record in binary & text files  
+//        user.reWrtBin(recordLoc); 
         cout << "\nUser is updating binary file...."; 
         return isTrue; // return true and Admin will confirm files were rewritten
     }
