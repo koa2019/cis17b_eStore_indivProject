@@ -1,5 +1,5 @@
 #include "Admin.h"
-#include "Survey.h" 
+#include "Store.h" 
 #include "Cart.h"
 #include "Item.h"
 using namespace std;  //STD Name-space where Library is compiled
@@ -77,8 +77,13 @@ void Admin::copy2Usr(User &user2, const int indx){
     user2.setName(usrArr[indx]->user.getName());       
     user2.setEmail(usrArr[indx]->user.getEmail());
     user2.setPwrd(usrArr[indx]->user.getPwrd());
-    user2.setCartSiz(usrArr[indx]->user.getCartSiz());        
-    //cout<<"\n admin record: " << usrArr[indx]->user.getNumRec() <<endl;
+    user2.setCartSiz(usrArr[indx]->user.getCartSiz()); 
+    int num = usrArr[indx]->user.cart.getCartIndx(0);
+    user2.cart.setCartIndx(0,num);
+    num = usrArr[indx]->user.cart.getCartIndx(1);
+    user2.cart.setCartIndx(1,num);
+    num = usrArr[indx]->user.cart.getCartIndx(2);
+    user2.cart.setCartIndx(2,num);
     //usrArr[indx]->printAdUsr();
 }
 
@@ -94,9 +99,9 @@ int Admin::isUsrLogin(){
     bool isName = false, isPwrd = false;
     int num = rand()%(0+totalRec);
     
-    //string tempE = "", tempPw = "";
+    string tempE = "", tempPw = "";
     //cout<<"\n\n*****Hide this after testing*****\n"<< usrArr[num]->user.getEmail()<<"\n"<< usrArr[num]->user.getPwrd()<<"\n*********************************\n";
-    string tempE = usrArr[num]->user.getEmail(), tempPw =usrArr[num]->user.getPwrd(); // use for testing when you don't want to type it in each time
+    //string tempE = usrArr[num]->user.getEmail(), tempPw =usrArr[num]->user.getPwrd(); // use for testing when you don't want to type it in each time
     
     cout<<"\nEmail is case sensitive. Must use lowercase letters.\n";
     do {
@@ -196,7 +201,7 @@ void Admin::adminPortal(){
             <<"2: Find one index\n\t"
             <<"3: Find by email\n\t"
             <<"4: Edit Cart\n\t"
-            <<"5: Show Survey Results\n\t"
+            <<"5: View Store Stats\n\t"
             <<"6: Delete a user\n\t"
             <<"7: Reset binary and text files\n\t"
             <<"8: Update Admin's Profile\n\t"
@@ -232,7 +237,7 @@ void Admin::adminPortal(){
             {    
                 editCart();
                 readBin_setArray();  // Reset user array with records read in from latest binary file
-                printItemHist();     // Print survey results
+                printItemStats();     // Print store results
                 pause();
                 break;
             }
@@ -240,7 +245,7 @@ void Admin::adminPortal(){
             {    
                 
                 readBin_setArray();  // Reset user array with records read in from latest binary file
-                printItemHist();     // Print survey results
+                printItemStats();     // Print store results
                 pause();
                 break;
             }
@@ -392,14 +397,13 @@ void Admin::readBin_setArray(){
         usrArr[i]->setBegnFile(bFile);
         usrArr[i]->setRecSiz(thisSum);
        
-        //cout<<"\ni = "<<i<<" recSiz = "<<usrArr[i]->recSiz<<"  begnFile = "<<usrArr[i]->begnFile<<endl;   
-
+        //usrArr[i]->getCartArr(); // Prints user's cart[]
         //usrArr[i]->printAdUsr();
         i++; 
     }    
     
     i = (i > totalRec) ? i : totalRec;
-    setItemHist();    
+    setItemStats();    
     inBin.close();              
 }
 
@@ -408,9 +412,9 @@ void Admin::readBin_setArray(){
 /******************************************************************/ 
 //                  
 /******************************************************************/ 
-void Admin::setItemHist(){
+void Admin::setItemStats(){
     
-    //cout << "\n\tHit setItemHist().\n";  
+    //cout << "\n\tHit setItemStats().\n";  
     
      int totalPurchd = 0, item0Purchd = 0, item1Purchd = 0, item2Purchd = 0;
      
@@ -419,49 +423,58 @@ void Admin::setItemHist(){
      
         //usrArr[i]->getCartArr();   
         
-        // Loop through number of items in survey
-        for(int cartIndx=0; cartIndx < NUMQQ; cartIndx++){           
+        float sum = 0;
+        int sumItms = 0;
+         
+        // Loop through number of items in store
+        for(int cartIndx=0; cartIndx < NUMITEMS; cartIndx++){           
        
                         
             // set this person's cart for item 0, 1, 2
             int cartVal = usrArr[i]->user.cart.getCartIndx(cartIndx); //  cart[0] = item 0          
                                                                      //  cart[1] = item 1  
-                                                                     //  cart[2] = item 2    
-            
+                                                                     //  cart[2] = item 2                
            
-            if( cartIndx == 0 && cartVal > 0){ // cart[0] > 0 ? QSum[0].vote[0] = +1                   
+            if( cartIndx == 0 && cartVal > 0){ // cart[0] > 0 ? itemStats.vote[0] = +1                   
 
-                //cout << " Hit cartIndx == 0\n";
                 item0Purchd  += cartVal;
+                //cout << " Hit cartIndx == 0  "<< "item0Purchd = " << item0Purchd << "  cartVal = " << cartVal << endl;
+                sumItms += cartVal;
+                sum += (cartVal* (store.item[cartIndx]->getPrice() ));
                 
-            } else if(cartIndx == 1 && cartVal > 0){  //  vote[count] = 2 ? QSum[0].vote[1] = +1
+            } else if(cartIndx == 1 && cartVal > 0){  //  vote[count] = 2 ? itemStats.vote[1] = +1
 
-                //cout << " Hit cartIndx == 1\n";
                 item1Purchd  += cartVal;
-
-            } else if(cartIndx == 2 && cartVal > 0){   //  vote[count] = 3 ? QSum[0].vote[2] = +1
-
-                //cout << " Hit cartIndx == 2\n";
+                //cout << " Hit cartIndx == 1  " << "item1Purchd = " << item1Purchd << "  cartVal = " << cartVal << endl;
+                sumItms += cartVal;
+                sum += (cartVal* (store.item[cartIndx]->getPrice() ));
+                 
+            } else if(cartIndx == 2 && cartVal > 0){   //  vote[count] = 3 ? itemStats.vote[2] = +1
+                
                 item2Purchd  += cartVal;
+                //cout << " Hit cartIndx == 2  " << "item2Purchd = " << item2Purchd << "  cartVal = " << cartVal << endl;
+                sumItms += cartVal;
+                sum += (cartVal* (store.item[cartIndx]->getPrice() ));
             }
             else {
                 cout<<"";
             }
-         
-        } // ends cartIndx < NUMQQ        
-        
-        //cout<<" After tallying sum \n";
-        //printItemHist();
+            
+            // Reset this user's cart variables           
+            usrArr[i]->user.cart.setTotItm(sumItms);
+            usrArr[i]->user.cart.setCartTotal(sum);
+            
+        } // ends cartIndx < NUMITEMS        
         
     } // ends i < totalRec 
      
     // the how many times each time has been purchased
-    itemHistory.setCartIndx(0, item0Purchd); 
-    itemHistory.setCartIndx(1, item1Purchd); 
-    itemHistory.setCartIndx(2, item2Purchd); 
+    itemStats.setCartIndx(0, item0Purchd); 
+    itemStats.setCartIndx(1, item1Purchd); 
+    itemStats.setCartIndx(2, item2Purchd); 
     
     totalPurchd = item0Purchd + item1Purchd + item2Purchd;
-    itemHistory.setCartSize(totalPurchd);
+    itemStats.setTotItm(totalPurchd);
 }
 
 
@@ -469,9 +482,9 @@ void Admin::setItemHist(){
 /******************************************************************/ 
 //
 /******************************************************************/ 
-void Admin::printItemHist(){
+void Admin::printItemStats(){
     
-    cout<<"\n\t\t\t*****Averages for Purchased Item*****";
+    cout<<"\n\t\t\t*****Statistics for Purchased Item*****";
     
     // Loop through usrArr[] & print their order cart[] 
     cout << endl << endl;
@@ -481,23 +494,53 @@ void Admin::printItemHist(){
     }
     
     cout << fixed << setprecision(0) << endl << endl << endl;     
-    
-    Survey survey;
      
     float avg = 0.0f;
     
-    for(int i=0; i < NUMQQ; i++){ 
+    for(int i=0; i < NUMITEMS; i++){ 
         
-        cout << "\t  Item " << i+1 << setw(20) << survey.item[i]->getItem(0);
+        cout << "\t  Item " << i+1 << setw(20) << store.item[i]->getItem(0);
              
-        //float totalPurchd = itemHistory.getCartSize();
-        //avg = (itemHistory.getCartIndx(i)/totalPurchd)*100;
+        float totalPurchd = itemStats.getTotItm();
+        avg = 100*(itemStats.getCartIndx(i)/totalPurchd);
         
-        cout << " purchased: "<< itemHistory.getCartIndx(i) << " times. ";//<< setw(3) << avg << "%  ";
-        getChart(itemHistory.getCartIndx(i));
+        cout << " purchased: "<< itemStats.getCartIndx(i) << " times. "<< setw(3) << avg << "%  ";
+        getChart(itemStats.getCartIndx(i));
     }    
-    cout << "\n\t  Total items every purchased:  " << itemHistory.getCartSize() << endl;
+    cout << "\n\t  Total items ever purchased:  " << itemStats.getTotItm() << endl;
 }
+
+
+//*********************************************************
+//           Aggregating instance of Item Class
+//*********************************************************  
+void Admin::getCheckout(int indx){
+    
+    float sum = 0.0f;
+    int sumItms = 0;
+    
+    cout << "\n\n\t***CHECKOUT***\n\n";
+   
+
+    for(int i=0; i < NUMITEMS; i++){
+
+        int quantity = usrArr[indx]->user.cart.getCartIndx(i);
+
+        if(quantity > 0){
+            
+            sum += (quantity*store.item[i]->getPrice());            
+            
+            cout << setw(19) << store.item[i]->getItem(0);
+            cout << setw(3) << "$" << store.item[i]->getPrice() 
+                 << " x " << quantity 
+                 << " = " << sum << endl;
+        }
+    }        
+    cout << "-----------------------------------------\n";
+    cout << setw(34) << "Total $" << usrArr[indx]->user.cart.getCartTotal() << endl;
+    cout << setw(34) << "Total Items: " << usrArr[indx]->user.cart.getTotItm() <<endl<<endl;     
+}
+
 
 
 /******************************************************************/ 
@@ -536,11 +579,11 @@ void Admin::editCart(){
     cout<<"\nWhich record do you want to edit?\n";
     getIndex(indx);          
     
-    cout<<"\n\nEnter the answer for item 1. Number 1-"<<NUMQQ<<endl;
+    cout<<"\n\nEnter the answer for item 1. Number 1-"<<NUMITEMS<<endl;
     cin >> num1;   
-    cout<<"Enter the answer for item 2. Number 1-"<<NUMQQ<<endl;
+    cout<<"Enter the answer for item 2. Number 1-"<<NUMITEMS<<endl;
     cin >> num2; 
-    cout<<"Enter the answer for item 3. Number 1-"<<NUMQQ<<endl;
+    cout<<"Enter the answer for item 3. Number 1-"<<NUMITEMS<<endl;
     cin >> num3;
     cin.ignore();
     

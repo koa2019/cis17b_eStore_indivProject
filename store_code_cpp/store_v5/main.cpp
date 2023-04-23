@@ -1,17 +1,23 @@
 /* 
  * File:    main.cpp
  * Author:  Danielle F
- * Created: 04-22-23 @7PM
- * Purpose: store_v4_prntCartAvgInAdmin
+ * Created: 04-22-23 @9PM
+ * Purpose: store_v5
   
- store_v4_prntCartAvgInAdmin:
- *  Calculated & printed every items purchase history in Admin::setItemHist() 
+ store_v5:
+ * Refractored Survey class to Store.
+ * copy2Usr() saved cart[] elements to user2.
+ * Added getCheckout() in Admin. It prints the user's order.
+ * Fixed BUG: Cart::cartTotal not adjusting total when item quantity is updated in store,
+   by creating temp integer array to temporarily saves the user's order until they're
+   ready to checkout.
+ * Added Cart::totalItems.
+ * Set each player's totalItems and cartTotal after binary file is read. Inside of Admin::setItemStats().
+ * Prints percentages in printItemStats().
   
- To Do: 
- * 
- * BUG: Cart::cartTotal not adjusting total when item quantity is updated in survey.
- * Put checkout in a function instead of inside Survey::start()
- * Move **item from Survey class to Item class.
+ To Do:  
+ * Move printItemStats() from main() to adminPortal().
+ * Move **item from Store class to Item class.
  * Make readInput() read inputs from file again 
  * Add a bool isDeleted[totalRec] to Admin as a flag for deleted records? 
  * DRY. Clean up repetitive code.
@@ -31,7 +37,7 @@ using namespace std;  //STD Name-space where Library is compiled
 //User Libraries
 #include "User.h"
 #include "Admin.h"
-#include "Survey.h"
+#include "Store.h"
 
 //Global Constants not Variables
 //Math/Physics/Science/Conversions/Dimensions
@@ -50,7 +56,7 @@ int main(int argc, char** argv) {
         <<"1: Admin Login\n"
         <<"2: Sign Up\n"
         <<"3: User Login\n"
-        <<"4: View Purchase Averages\n"
+        <<"4: View Purchase Stats\n"
         <<"5: Reset binary & text files\n"
         <<"9: Exit\n"
         <<"Enter a number: ";
@@ -77,25 +83,25 @@ int main(int argc, char** argv) {
                     
                     cout<<"\nUser login was successful.\n"; 
                     //cout<<"\ninside main() admin1 object looks like: ";
-                    //admin.printAdUsr(indx);                    
+                    admin.printAdUsr(indx);                    
                     
                     
                     // Create new User & copy admin values to user                    
                     admin.copy2Usr(user,indx);    
                     cout << "\nWelcome " << user.getName();
                     user.printUsr(); 
-                    //admin.printAdUsr(user.getNumRec()); 
+                    admin.printAdUsr(user.getNumRec()); 
                
                     
                     // Create new instance of NewClass class
-                    Survey survey;
+                    Store store;
                                  
                     long recordLoc = admin.getBegnFile(indx);
                     
                     if(recordLoc<0){ cout << "\nError finding record location\n"; break; }
                     
                     // if user is winner & has new hiScore, then print their update record
-                    if(survey.start(user, recordLoc)) {                         
+                    if(store.start(user)) {                         
                         
                         //cout<<"\n\ninside main() user object looks like: ";
                         //user.printUsrRec();                       
@@ -106,19 +112,18 @@ int main(int argc, char** argv) {
                         cout << "\nUser is updating binary file....";         
                         admin.readBin_setArray();
                         cout << "\nAdmin is reading updated binary file....\n";
-                        admin.printAdUsr(user.getNumRec());
-                        //cout << "Survey Results\n";
-                        //admin.getCartArr();
+                        admin.printAdUsr(user.getNumRec());                       
+                        admin.getCheckout(indx);                        
                     }                                                    
                 }
                 break;
             }             
-            case 4: // View the Survey's chart
+            case 4: // View the Store's chart
             {          
                 //cout<<"\tIn main()"; 
-                admin.printCartAvg();
+                admin.printItemStats();
                 //User guest("Guest");                
-                //Survey sGuest;
+                //Store sGuest;
                 //if(sGuest.start(guest, 0)) { 
                         //cout<<"\n\ninside main() guest object looks like: ";
                         //guest.printUsrRec();   
