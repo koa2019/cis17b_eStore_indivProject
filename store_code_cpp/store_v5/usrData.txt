@@ -7,8 +7,7 @@ email:   homer@simp.com
 pwrdSiz: 8
 pwrd:    Homer!23
 votSiz:  003
-cart[3,0,0]
-
+cart[1,1,1]
 
 Record   1
 namSiz:  13
@@ -16,11 +15,11 @@ name:    marge simpson
 emaiSiz: 14
 email:   marge@simp.com
 pwrdSiz: 8
-pwrd:    Marge$ab
+pwrd:    Marge$23
 votSiz:  003
-cart[0,3,0]
+cart[2,2,2]
 
-ecord   2
+Record   2
 namSiz:  12
 name:    lisa simpson
 emaiSiz: 13
@@ -28,7 +27,7 @@ email:   lisa@simp.com
 pwrdSiz: 9
 pwrd:    Lisa!2345
 votSiz:  003
-cart[3,3,2]
+cart[3,3,3]
 
 Record   3
 namSiz:  11
@@ -38,8 +37,9 @@ email:   yoda@jedi.com
 pwrdSiz: 8
 pwrd:    Yoda!234
 votSiz:  003
-cart[3,2,3]
+cart[2,2,2]
 
+Rec
 Record   4
 namSiz:  16
 name:    anakin skywalker
@@ -48,9 +48,8 @@ email:   anakin@jedi.com
 pwrdSiz: 8
 pwrd:    Anakin!2
 votSiz:  003
-cart[1,2,1]
-
-Record   5
+cart[2,1,1]
+ord   5
 namSiz:  8
 name:    lucy sky
 emaiSiz: 12
@@ -68,19 +67,9 @@ email:   harry@potter.com
 pwrdSiz: 8
 pwrd:    Harry!23
 votSiz:  003
-cart[2,2,3]
+cart[2,3,3]
 
 Record   7
-namSiz:  10
-name:    jane smith
-emaiSiz: 14
-email:   jane@smith.com
-pwrdSiz: 8
-pwrd:    Jane!234
-votSiz:  003
-cart[3,1,3]
-
-Record   8
 namSiz:  12
 name:    mickey mouse
 emaiSiz: 17
@@ -88,9 +77,10 @@ email:   mickey@disney.com
 pwrdSiz: 9
 pwrd:    Mickey!23
 votSiz:  003
-cart[2,3,1]
+cart[2,1,3]
 
-Record   9
+Record  
+Record   8
 namSiz:  12
 name:    minnie mouse
 emaiSiz: 17
@@ -98,25 +88,4 @@ email:   minnie@disney.com
 pwrdSiz: 9
 pwrd:    Minnie!23
 votSiz:  003
-cart[3,1,2]
-
-Record   10
-namSiz:  12
-name:    taylor swift
-emaiSiz: 16
-email:   taylor@swift.com
-pwrdSiz: 9
-pwrd:    Taylor!23
-votSiz:  003
-cart[3,1,2]
-
-Record   1
-Record   11
-namSiz:  8
-name:    danielle
-emaiSiz: 14
-email:   danielle@d.com
-pwrdSiz: 11
-pwrd:    Danielle!23
-votSiz:  003
-cart[10,0,0]
+cart[4,2,1]

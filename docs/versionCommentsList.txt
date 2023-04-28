@@ -1,4 +1,9 @@
+v1.1:
+ * This is based off of yahtzee_v24_moveDice2SC.
 
+ v1.3:
+ * Merged yahtzee_v28.2's Admin & User Classes with store_v1.2
+ 
 
 store_v2:
  * Is a copy of survey project v6.

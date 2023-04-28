@@ -248,7 +248,7 @@ void User::wrtBin(){
 
 void User::reWrtBin(long begnFile){
       
-    //cout<<"\n\n Hit reWrtBin()  begnFile = " << begnFile << endl;
+    cout<<"\n\nRewriting record in binary file...\n";
      
     //printUsrRec();
     
@@ -695,15 +695,13 @@ void User::readInputFile(){
 
     User user1("homer simpson","homer@simp.com","Homer!23",1,1,1);
     User user2("marge simpson","marge@simp.com","Marge$23",2,2,2);
-    User user3("lisa simpson","lisa@simp.com","Lisa!2345" ,3,3,2);
+    User user3("lisa simpson","lisa@simp.com","Lisa!2345" ,3,3,3);
     User user4("master yoda","yoda@jedi.com","Yoda!234");
     User user5("anakin skywalker","anakin@jedi.com","Anakin!2");
     User user6("lucy sky","lucy@sky.com","Lucy#2345"); 
     User user7("harry potter","harry@potter.com","Harry!23");
-    User user8("jane smith","jane@smith.com","Jane!234");
-    User user9("mickey mouse","mickey@disney.com","Mickey!23");
-    User use10("minnie mouse","minnie@disney.com","Minnie!23");
-    User use11("taylor swift","taylor@swift.com","Taylor!23");
+    User user8("mickey mouse","mickey@disney.com","Mickey!23");
+    User user9("minnie mouse","minnie@disney.com","Minnie!23");
     
    
     // Open & read input.txt
