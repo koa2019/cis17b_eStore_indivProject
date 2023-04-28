@@ -72,7 +72,7 @@ Admin::~Admin() {
 
 void Admin::copy2Usr(User &user2, const int indx){
    
-    //cout<< "\n inside copy2Usr()";
+    cout<< "\nCopying Admin object to User object...\n";
     user2.setNumRec(usrArr[indx]->user.getNumRec());
     user2.setName(usrArr[indx]->user.getName());       
     user2.setEmail(usrArr[indx]->user.getEmail());
@@ -99,9 +99,9 @@ int Admin::isUsrLogin(){
     bool isName = false, isPwrd = false;
     int num = rand()%(0+totalRec);
     
-    string tempE = "", tempPw = "";
-    //cout<<"\n\n*****Hide this after testing*****\n"<< usrArr[num]->user.getEmail()<<"\n"<< usrArr[num]->user.getPwrd()<<"\n*********************************\n";
-    //string tempE = usrArr[num]->user.getEmail(), tempPw =usrArr[num]->user.getPwrd(); // use for testing when you don't want to type it in each time
+    cout<<"\n\n*****Hide this after testing*****\n"<< usrArr[num]->user.getEmail()<<"\n"<< usrArr[num]->user.getPwrd()<<"\n*********************************\n";
+    string tempE = usrArr[num]->user.getEmail(), tempPw =usrArr[num]->user.getPwrd(); // use for testing when you don't want to type it in each time
+    
     
     cout<<"\nEmail is case sensitive. Must use lowercase letters.\n";
     do {
@@ -200,8 +200,8 @@ void Admin::adminPortal(){
             <<"1: Show all users\n\t"
             <<"2: Find one index\n\t"
             <<"3: Find by email\n\t"
-            <<"4: Edit Cart\n\t"
-            <<"5: View Store Stats\n\t"
+            <<"4: Edit a User's Cart\n\t"
+            <<"5: View Purchased Stats\n\t"
             <<"6: Delete a user\n\t"
             <<"7: Reset binary and text files\n\t"
             <<"8: Update Admin's Profile\n\t"
@@ -211,14 +211,14 @@ void Admin::adminPortal(){
         cin.ignore();
         
         switch(choice){
-            case 1:
+            case 1:     // Show all users
             {   
                 readBin_setArray();  // Reset user array with records read in from latest binary file
                 printAllUsr(); // Print usrArr[]   
                 pause();
                 break;
             } 
-            case 2:
+            case 2:     // Find one index
             { 
                 cout<<"\nWhich record are you looking for?\n";
                 int indx = 0;
@@ -227,36 +227,29 @@ void Admin::adminPortal(){
                 break;
             } 
             
-            case 3:
+            case 3:     // Find by email
             {   
                 getByEmail();  // Find user by email in binary file 
                 pause();
                 break;
             }      
-            case 4:  
+            case 4:       // Edit Cart
             {    
-                editCart();
-                readBin_setArray();  // Reset user array with records read in from latest binary file
-                printItemStats();     // Print store results
+                editCart();                
                 pause();
                 break;
             }
-            case 5:  
-            {    
-                
+            case 5:                   // View Purchased Stats
+            {                    
                 readBin_setArray();  // Reset user array with records read in from latest binary file
-                printItemStats();     // Print store results
+                printItemStats();    // Print store results
                 pause();
                 break;
             }
-            case 6: 
+            case 6:      // Delete a user's record in binary & text files
             {   
-                deleteUsr(); // Delete record in binary & text
-                //if(tempName.compare(0,6,"xxxxxx") == 0){
-                //   cout<<"\nYou can not edit this record.\n"
-                //       <<"This record was deleted.\n";
-                //} 
-                 pause();
+                deleteUsr();                 
+                pause();
                 break;
             }             
             case 7:   // Reset files by erasing binary & text file, then creates records in 
@@ -265,7 +258,7 @@ void Admin::adminPortal(){
                 readBin_setArray();
                 break;
             }
-            case 8:
+            case 8:     // Update Admin's profile
             {                
                 updateAdmin();        
                 break;
@@ -284,7 +277,7 @@ void Admin::adminPortal(){
 //******************************************************************
 void Admin::readBin_setArray(){
     
-    //cout<<"\n\tHit readBin_setArray()\n";
+    cout<<"\nReading User binary file and resetting usrArr...\n";
     
     ifstream inBin;
     string file = "usrData.dat";
@@ -484,7 +477,7 @@ void Admin::setItemStats(){
 /******************************************************************/ 
 void Admin::printItemStats(){
     
-    cout<<"\n\t\t\t*****Statistics for Purchased Item*****";
+    cout<<"\n\t\t\t*****Statistics for Purchased Items*****";
     
     // Loop through usrArr[] & print their order cart[] 
     cout << endl << endl;
@@ -573,28 +566,36 @@ void Admin::editCart(){
     
     int num1 = 1, 
         num2 = 1,
-        num3 = 1;    
-    int indx = 0;  
+        num3 = 1,    
+        indx = 0;  
     
     cout<<"\nWhich record do you want to edit?\n";
     getIndex(indx);          
     
-    cout<<"\n\nEnter the answer for item 1. Number 1-"<<NUMITEMS<<endl;
-    cin >> num1;   
-    cout<<"Enter the answer for item 2. Number 1-"<<NUMITEMS<<endl;
-    cin >> num2; 
-    cout<<"Enter the answer for item 3. Number 1-"<<NUMITEMS<<endl;
-    cin >> num3;
+    do {
+        cout<<"\n\nEnter sushi quantity for item 1. Number 1-10\n";
+        cin >> num1;   
+    } while(!(num1>=0 && num1<=10));
+    
+    do {
+        cout<<"\nEnter sushi quantity for item 2. Number 1-10\n";
+        cin >> num2;   
+    } while(!(num2>=0 && num2<=10));
+    
+    do {
+        cout<<"\nEnter sushi quantity for item 3. Number 1-10\n";
+        cin >> num3;   
+    } while(!(num3>=0 && num3<=10));
     cin.ignore();
     
-    usrArr[indx]->user.cart.setCartArr(num1,num2,num3);  
-   
+    usrArr[indx]->user.cart.setCartArr(num1,num2,num3);     
     
     long recLoc = usrArr[indx]->begnFile;
     usrArr[indx]->user.reWrtBin(recLoc);
-    usrArr[indx]->readBin_setArray(); // Reset usrArr after the binary file is updated   
+    readBin_setArray(); // Reset usrArr after the binary file is updated   
     cout<<"\n\nRecord successfully updated.\n";
     usrArr[indx]->printAdUsr();
+    printItemStats();     // Print store results
 }
 
 
@@ -629,7 +630,7 @@ void Admin::deleteUsr(){
     usrArr[indx]->user.setPwrd(temp);       // Reset password 
     usrArr[indx]->user.setCartSiz(0);       // Reset cartSiz
     usrArr[indx]->user.reWrtBin(usrArr[indx]->begnFile); // rewrites this record in binary & text files  
-    usrArr[indx]->readBin_setArray();          // Reset usrArr[] after the binary file is updated  
+    readBin_setArray();          // Reset usrArr[] after the binary file is updated  
     cout<<"\n\nRecord successfully deleted.";
     usrArr[indx]->printAdUsr();          // confirm this record was reset
 }
@@ -678,15 +679,23 @@ bool Admin::findByEmail(string tempEmail, int &indx){
 /*****************************************************************/
 void Admin::getByEmail(){
     
+       
     int ind = 0, count = 0, size = 0;
+    int num = rand()%(0+totalRec);
     string tempEmail = "";
+    
+    
+    cout<<"\n\n*****Hide this after testing*****\n"<< usrArr[num]->user.getEmail()<<"\n*********************************\n";
+    tempEmail = usrArr[num]->user.getEmail(); // use for testing when you don't want to type it in each time
+    //tempEmail = "homer@simp.com";
+    //tempEmail = "marge@simp.com";
+    //tempEmail = "lucy@beatles.com";  
+    
     
     cout<<"\nEnter the email you want to find: ";
     cin >> tempEmail;
-    
-    //tempEmail = "homer@simp.com";
-    //tempEmail = "marge@simp.com";
-    //tempEmail = "lucy@beatles.com";          
+    cin.ignore();    
+            
     cout <<"\n\nLooking for " << tempEmail << "...\n\n";   
     
     bool foundEmail = false;  
@@ -695,22 +704,22 @@ void Admin::getByEmail(){
     
     while( (!foundEmail) && (count < totalRec) ){
         
-        size = usrArr[count]->user.getEmaiSiz(); // get emaiSiz read from binary
-        binaryEmail.resize(size);                 // resize string to emaiSiz
+        //size = usrArr[count]->user.getEmaiSiz(); // get emaiSiz read from binary
+        //binaryEmail.resize(size);                 // resize string to emaiSiz
         binaryEmail = usrArr[count]->user.getEmail(); // get email read from binary
         foundEmail = user.isStrEqual(tempEmail, binaryEmail); // compare binary email with email inputted by user
         //cout<< "\n\t" << tempEmail << "==" << binaryEmail << endl ;
         
         if(foundEmail){
             int indx = usrArr[count]->user.getNumRec();
-            cout<<"Located " << tempEmail << "'s profile";
+            cout<<"Located " << tempEmail << "'s profile.\n";
             usrArr[indx]->printAdUsr();
             count = totalRec;
         } 
         else {  count++; }       
     }        
    
-    if(!foundEmail){ cout<<"\nUnable to locate email.\n"; }   
+    if(!foundEmail){ cout<<"\nUnable to locate email.\n"; } 
 }
 
 

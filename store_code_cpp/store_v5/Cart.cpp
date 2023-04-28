@@ -22,7 +22,7 @@ Cart::Cart(){
 //
 //*********************************************************
 void Cart::setCartArr(int a, int b, int c){
-    //cout<<"\n\tHit setVotArr()\n";
+    //cout<<"\n\tHit setCarArr(a,b,c)\n";
     cart[0] = a;
     cart[1] = b;
     cart[2] = c;
