@@ -22,11 +22,11 @@ function User(){
 
 //To String function of the ScoreCard Class
 User.prototype.printUser=function(){
-    console.log("numRec   = " + this.getNumRec());
-    console.log("name     = " + this.getName());
-    console.log("email    = " + this.getEmail());
-    console.log("password = " + this.getPassword());
-    console.log("cartSize = " + this.getCartSize());
+    console.log("numRec   = " + this.getNumRec()
+    + "\nname     = " + this.getName()
+    + "\nemail    = " + this.getEmail()
+    + "\npassword = " + this.getPassword()
+    + "\ncartSize = " + this.getCartSize() +"\n");
     this.cart.printCart();
 };
 

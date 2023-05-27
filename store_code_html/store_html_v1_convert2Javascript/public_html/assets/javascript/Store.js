@@ -23,20 +23,12 @@ function Store(user) {
    
     console.log("Hit Store Default Constructor");
     this.isComplete = false;
-    this.showMenu();
+    this.showMenu(user);
     document.getElementById('header').innerHTML = "OISHII SUSHI & TERIYAKI";
     document.getElementById('message-div').innerHTML = 'Welcome ' + user.getName();
-    document.getElementById('submit-cart').addEventListener('click', this.tallyCart);
+    //document.getElementById('submit-cart').addEventListener('click', this.tallyCart);
     
-    user.printUser(); 
-
-//    this.basket = [menuSize];
-//    for(var i=0; i < menuSize; i++){
-//        this.setBasketIndex(i,-1);
-//    }
-//    //alert(this.getBasket());
-//    this.totalBasketIems = 0;
-//    this.checkout();
+    //user.printUser(); 
 }
 
 
@@ -54,15 +46,12 @@ Store.prototype.checkout = function() {
 //          Event handler for submit button
 //          getElementsByName will not return a value!
 //*********************************************************
-Store.prototype.tallyCart=function(){    
+Store.prototype.tallyCart=function(user){    
     
     console.log("Hit tallyCart()");
-    //user.printUser();
-    //alert(this.getBasket());
+    //user.printUser();    
     
-    
-    var cart = [0,0,0];
-    var totalItems = 0;
+    var value = 0;
     var cartTotalCost = 0.0;
     var item0 = document.getElementById('0');
     var item1 = document.getElementById('1');
@@ -70,43 +59,39 @@ Store.prototype.tallyCart=function(){
     
     // if checkbox is checked on html, then set these variables
     if(item0.checked){
-        totalItems++;
-        var value0 = item0.value *1;
-        cartTotalCost += value0;
-        console.log('item0.value = ' + value0); 
-        cart[0] = 1;
+        user.cart.increTotItm();
+        value = item0.value *1;
+        //console.log('item0.value = ' + value0);
+        cartTotalCost += value;
+        user.cart.setCartIndx(0,1);
     }
     if(item1.checked){
-        totalItems++;
-        var value1 = item1.value  *1;
-        cartTotalCost += value1;
-        console.log('item1.value = ' + value1);
-        cart[1] = 1;
+        user.cart.increTotItm();
+        value = item1.value  *1;
+        //console.log('item1.value = ' + value1);
+        cartTotalCost += value;
+        user.cart.setCartIndx(1,1);
     }
     if(item2.checked){
-        totalItems++;
-        var value2 = item2.value  *1;
-        cartTotalCost += value2;
-        console.log('item2.value = ' + value2);
-        //this.setBasketIndex(2,1);
-        cart[2] = 1;
+        user.cart.increTotItm();
+        value = item2.value  *1;        
+        //console.log('item2.value = ' + value2);
+        cartTotalCost += value;
+        user.cart.setCartIndx(2,1);
     }
     
     //          CHECKOUT
-    //document.getElementById('submit-cart').removeEventListener('click', this.tallyCart);
     document.getElementById('submit-cart').style.display = 'none';
     
     // if cart is empty on submit
-    if(totalItems === 0){
+    if(user.cart.getTotalItems() === 0){
         alert("Your order was not completed."); 
         console.log("Your order was not completed."); 
         this.isComplete = false;
         return this.isComplete;     
     } 
-    
-    console.log('checkout cart = [ ' + cart + ' ]');
-    console.log('totalItems:    ' + totalItems);
-    console.log('cartTotalCost $' + cartTotalCost.toFixed(2));
+    user.cart.setCartTotalCost(cartTotalCost);
+    user.printUser();
     this.isComplete = true; // set flag       
     return this.isComplete; // return true and Admin will confirm files were rewritten 
 };
@@ -121,6 +106,9 @@ Store.prototype.tallyCart=function(){
 //};
 
 //               Accessors
+Store.prototype.getIsComplete = function() {
+    return this.isComplete;
+};
 //Store.prototype.getTotalBasketIems = function() {
 //    return this.totalBasketIems;
 //};
@@ -135,7 +123,7 @@ Store.prototype.tallyCart=function(){
 //*********************************************************
 //               Write menu items to HTML
 //*********************************************************
-Store.prototype.showMenu=function() {
+Store.prototype.showMenu=function(user) {
 
     console.log("Hit showMenu()");
     var div = document.getElementById("menu-Div");
@@ -185,7 +173,7 @@ Store.prototype.showMenu=function() {
     }
 
     // Create & append a submit button
-    var surveyBtn = this.makeBtn('button', 'submit', 'submit-cart');
+    var surveyBtn = this.makeBtn('button', 'submit', 'submit-cart',user);
     form.append(surveyBtn);    
 };
 
@@ -193,11 +181,12 @@ Store.prototype.showMenu=function() {
 //*********************************************************
 //              Make a submit button   
 //*********************************************************
-Store.prototype.makeBtn=function(type, val, id) {
+Store.prototype.makeBtn=function(type, val, id,user) {
     var input = document.createElement('button');
     input.setAttribute('type', type);
     input.setAttribute('id', id);
     input.setAttribute('value', val);
+    input.setAttribute('onclick', 'store.tallyCart(user)');
     input.innerHTML = val;
     return input;
 };
