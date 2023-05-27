@@ -22,7 +22,7 @@ Cart.prototype.setTotalItems=function(n) { this.totalItems = n; };
 Cart.prototype.setCartIndx=function(i, value){ this.cart[i] = value; };
 Cart.prototype.setCartArr=function(){};            // Sets cart elements to random #'s
 Cart.prototype.setCartArr=function(a,b,c){}; // sets cart elements to these integers
-Cart.prototype.increTotItm=function(){ this.cartSize++; };
+Cart.prototype.increTotItm=function(){ this.totalItems++; };
     
     
 // Accessors
@@ -30,13 +30,13 @@ Cart.prototype.getCart=function() { return this.cart; };
 Cart.prototype.getCartIndx=function(i) { return this.cart[i]; };
 Cart.prototype.getCartSize=function() { return this.cartSize; }; 
 Cart.prototype.getTotalItems=function() { return this.totalItems; };
-Cart.prototype.getCartTotalCost=function(){ return this.cartTotalCost; };
+Cart.prototype.getCartTotalCost=function(){ return this.cartTotalCost.toFixed(2); };
 Cart.prototype.printCart=function(){
     //console.log('cart[0] = ' + this.getCartIndx(0));
     //console.log('cart[1] = ' + this.getCartIndx(1));
     //console.log('cart[2] = ' + this.getCartIndx(2));
-    console.log('cart[ ' + this.getCart() + " ]"
-    + '.   getCartSize = ' + this.getCartSize() 
-    + '.   getTotalItems = ' + this.getTotalItems()
-    + '.   getCartTotalCost  $' + this.getCartTotalCost());
+    console.log('cart[ ' + this.getCart() + " ]\n"
+    + 'getCartSize = ' + this.getCartSize() 
+    + '\ngetTotalItems = ' + this.getTotalItems()
+    + '\ngetCartTotalCost  $' + this.getCartTotalCost());
 };

@@ -48,7 +48,7 @@ and open the template in the editor.
             store = new Store(user);
 
         // if user is winner & has new hiScore, then print their update record
-        //if(store.start(user)) {                         
+        if(store.getIsComplete()) {                         
 
             console.log("inside main() store.start() === true ");
 //            //user.printUsrRec();                       
@@ -61,7 +61,7 @@ and open the template in the editor.
 //            cout << "\nAdmin is reading updated binary file....\n";
 //            admin.printAdUsr(user.getNumRec());                       
 //            admin.getCheckout(indx);                        
-        //} 
+        } 
         </script>
     </body>
 </html>
