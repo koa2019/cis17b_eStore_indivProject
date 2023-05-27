@@ -39,9 +39,9 @@
     <itemPath>admin.txt</itemPath>
     <itemPath>input.txt</itemPath>
     <itemPath>numRecrds.txt</itemPath>
-    <itemPath>surveyQA.txt</itemPath>
     <itemPath>surveyResults.dat</itemPath>
     <itemPath>surveyResults.txt</itemPath>
+    <itemPath>sushiRoll_items.txt</itemPath>
     <itemPath>usrData.dat</itemPath>
     <itemPath>usrData.txt</itemPath>
   </logicalFolder>
@@ -85,11 +85,11 @@
       </item>
       <item path="numRecrds.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="surveyQA.txt" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="surveyResults.dat" ex="false" tool="3" flavor2="0">
       </item>
       <item path="surveyResults.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sushiRoll_items.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="usrData.dat" ex="false" tool="3" flavor2="0">
       </item>
@@ -146,11 +146,11 @@
       </item>
       <item path="numRecrds.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="surveyQA.txt" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="surveyResults.dat" ex="false" tool="3" flavor2="0">
       </item>
       <item path="surveyResults.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sushiRoll_items.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="usrData.dat" ex="false" tool="3" flavor2="0">
       </item>

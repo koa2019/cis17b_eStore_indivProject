@@ -146,7 +146,7 @@ void getUsrLogin(){
         user.printUsr(); 
         admin.printAdUsr(user.getNumRec()); 
 
-        // Create new instance of NewClass class
+        // Create new instance of Store class
         Store store;
 
         long recordLoc = admin.getBegnFile(indx);

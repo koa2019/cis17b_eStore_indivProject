@@ -49,7 +49,8 @@ pwrdSiz: 8
 pwrd:    Anakin!2
 votSiz:  003
 cart[2,1,1]
-ord   5
+o
+Record   5
 namSiz:  8
 name:    lucy sky
 emaiSiz: 12
@@ -57,9 +58,8 @@ email:   lucy@sky.com
 pwrdSiz: 9
 pwrd:    Lucy#2345
 votSiz:  003
-cart[1,3,2]
-
-Record   6
+cart[1,2,0]
+rd   6
 namSiz:  12
 name:    harry potter
 emaiSiz: 16
@@ -69,6 +69,7 @@ pwrd:    Harry!23
 votSiz:  003
 cart[2,3,3]
 
+Record 
 Record   7
 namSiz:  12
 name:    mickey mouse
@@ -77,9 +78,8 @@ email:   mickey@disney.com
 pwrdSiz: 9
 pwrd:    Mickey!23
 votSiz:  003
-cart[2,1,3]
-
-Record  
+cart[2,3,0]
+ 
 Record   8
 namSiz:  12
 name:    minnie mouse

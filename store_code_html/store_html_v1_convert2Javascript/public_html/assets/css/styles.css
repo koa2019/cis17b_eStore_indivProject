@@ -1,0 +1,53 @@
+* {
+    color: limegreen;
+    font-weight: bold;
+    font-size: 32px;
+    background-color: black;
+}
+
+body {
+/* background-color: plum;*/
+}
+header {
+    font-size: 64px;
+    text-align: center;
+}
+button {
+    margin: 20px;
+    font-size: 16px;
+}
+
+h2 {
+    /*top right bottom left*/
+/*    margin:25px 0 15px 25px;
+    padding-top: 20px;*/
+}
+
+#item0-div, #item1-div, #item2-div {
+    margin: 30px;
+}
+
+#message-div {
+    font-size: 44px;
+    text-align: center;
+}
+
+.container {
+    margin: auto;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    background-color: plum;
+    width: 800px;
+    height: 450px;
+/*    border-bottom-width: thick;
+    border-color: black;
+    border-style: solid;*/
+}
+
+input {
+/*    margin: 10px;    */
+}
+label {
+/*    margin: 10px;*/
+}
