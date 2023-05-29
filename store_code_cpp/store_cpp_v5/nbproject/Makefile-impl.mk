@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=store_v5
+PROJECTNAME=store_cpp_v5
 
 # Active Configuration
 DEFAULTCONF=Debug
