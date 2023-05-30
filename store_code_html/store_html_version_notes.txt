@@ -1,0 +1,13 @@
+
+store_html_v1_convert2Javascript:
+
+store_html_v2:
+
+store_html_v3: crashed? 
+
+store_html_v3.1: 
+Created store_cookies.js with cookie functions that set, read
+delete cookies using dr. lehr's program and tutorialspoint.com/javascript/javascript_cookies.htm.
+
+login.html sets the cookie with user's info and store.html reads the
+cookie and creates a global instance of User and Store objects.

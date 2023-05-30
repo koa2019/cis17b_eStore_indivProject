@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>OISHII SUSHI & TERIYAKI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- css -->
+        <link rel="stylesheet" href="./assets/css/reset.css" type="text/css" />
+        <link rel="stylesheet" href="./assets/css/styles.css" type="text/css" />
+    </head>
+    <body onload = "">
+        <header id="header"></header>
+        <div class="container"> 
+            <div id="message-div"></div>
+            <div id="menu-Div"></div>
+        </div>
+
+
+        <!--javascript-->
+        <!--<script type="text/javascript" src="./assets/javascript/Item.js"></script>-->
+        <script type="text/javascript" src="./assets/javascript/Cart.js"></script>
+        <script type="text/javascript" src="./assets/javascript/User.js"></script>
+        <script type="text/javascript" src="./assets/javascript/Store.js"></script>
+        <script type="text/javascript">
+
+            // Use JSON string from database to set a User object 
+            var user = new Array();
+            user = new User();
+            user.setNumRec(1);
+            user.setName("Yoshi");
+            user.printUser();    
+
+
+            // Create new instance of Store class
+            var store = new Array();
+            store = new Store(user);
+
+            // if user is winner & has new hiScore, then print their update record
+            if (store.getIsComplete()) {
+
+                console.log("inside main() store.start() === true ");
+//            //user.printUsrRec();                       
+//            //admin.printAdUsr(user.getNumRec());   
+//
+//            //rewrite this record in binary & text files  
+//            user.reWrtBin(recordLoc); 
+//            cout << "\nUser is updating binary file....";         
+//            admin.readBin_setArray();
+//            cout << "\nAdmin is reading updated binary file....\n";
+//            admin.printAdUsr(user.getNumRec());                       
+//            admin.getCheckout(indx);                        
+            }
+        </script>
+    </body>
+</html>

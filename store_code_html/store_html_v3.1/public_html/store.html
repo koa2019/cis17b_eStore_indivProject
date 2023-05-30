@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>OISHII SUSHI & TERIYAKI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- css -->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+        <link rel="stylesheet" href="./assets/css/reset.css" type="text/css" />
+        <link rel="stylesheet" href="./assets/css/styles.css" type="text/css" />
+        <!--javascript-->
+        <script type="text/javascript" src="./assets/javascript/login_cookie.js"></script>
+        <script type="text/javascript" src="./assets/javascript/Cart.js"></script>
+        <script type="text/javascript" src="./assets/javascript/User.js"></script>
+        <script type="text/javascript" src="./assets/javascript/Store.js"></script>
+        <script type = "text/javascript">
+
+           
+        </script>
+    </head>
+
+    <body onload="">
+        <header id="header"></header>
+        <div class="container"> 
+            <div id="message-div"></div>
+            <div id="menu-Div"></div>
+        </div>
+
+
+        <!--javascript-->
+        <script type="text/javascript">
+
+            // SETUP GLOBAL VARIABLES FOR THE PAGE HERE 
+            
+            //var cookie = getCookie('email'); // dr. lehr's
+            //console.log('getCookie() email='+ cookie.email);
+            
+            var cookie = readCookie();
+            //console.log('cookie\nname='+cookie.name+'\nemail='+cookie.email+'\npassword='+cookie.password);
+
+            // Create a Global intance of User object for the page
+            var user = new Array();
+            user = new User();
+            user.setUser(1, cookie.name, cookie.email, cookie.password );  
+            console.log("Hit store.html"); user.printUser();    
+            
+
+            // Create a Global intance of Store object for the page
+            var store = new Array();
+            store = new Store(user);
+
+            // if user is winner & has new hiScore, then print their update record
+            if (store.getIsComplete()) {
+
+                console.log("Hit store.html. store.getIsComplete()===true ");
+                user.printUser();                   
+                //admin.printAdUsr(user.getNumRec());   
+
+                //rewrite this record in binary & text files  
+                //user.reWrtBin(recordLoc); 
+                //cout << "\nUser is updating binary file....";         
+                //admin.readBin_setArray();
+                //cout << "\nAdmin is reading updated binary file....\n";
+                //admin.printAdUsr(user.getNumRec());                       
+                //admin.getCheckout(indx);                        
+            }
+        </script>
+    </body>
+</html>
