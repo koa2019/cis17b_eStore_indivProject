@@ -2,11 +2,11 @@
 var menu = [
     {name: 'Rainbow Roll',
         inside: 'Imitation crabmeat, cucumber, avocado<br>',
-        outside: 'Tuna, salmon, white fish, shrimp, albacore, avocado',
+        outside: 'Tuna, salmon, white fish, shrimp, albacore, avocado<br>',
         price: 11.95},
     {name: 'Hot Night Roll',
         inside: 'Shrimp, tempura, imi. crabmeat, cucumer, avocado<br>',
-        outside: 'Spicy tuna',
+        outside: 'Spicy tuna<br>',
         price: 12.95},
     {name: 'Baked Lobster Roll',
         inside: 'Imitation crabmeat, cucumber, avocado<br>',

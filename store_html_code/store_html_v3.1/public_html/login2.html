@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>   
+        <title>Store Login</title>
+        <!--css-->
+        <link rel="shortcut icon" href="./assets/img/favicon.ico">
+        <!--javascript-->
+        <script type="text/javascript" src="./assets/javascript/cookies.js"></script>
+        <!--<script type="text/javascript" src="./assets/javascript/User.js"></script>-->
+
+    </head>
+
+    <body>    
+
+        <!-- Set Cookie for User Login Form-->
+        <h1>Login</h1>
+        <form name = "myform1" action = "">
+            Enter email:    <input type = "text" name = "email"/><br>
+            Enter password: <input type = "text" name = "password"/><br>
+            <input type = "button" value = "Login" onclick = "writeCookie(); location.href = 'store.html'"/>
+        </form><br><br> 
+
+
+
+        <!-- Set Cookie to Create New Account Form-->
+        <h1>Sign Up</h1>
+        <form name = "myform" action="getForm.html" method = "GET">
+            Enter name:     <input type = "text" name = "name"/><br>
+            Enter email:    <input type = "text" name = "email"/><br>
+            Enter password: <input type = "text" name = "password"/><br>
+            <input type = "button" value = "Sign Up" onclick = "writeNewUserCookie()"/>
+        </form><br><br>   
+
+
+
+
+        <!-- Read All Cookies -->
+        <form name = "myform" action = "">
+            <p> click the following button and see the result:</p>
+            <input type = "button" value = "Get All Cookies" onclick = "readAllCookies()"/>
+        </form><br><br>  
+    </body>
+</html>
+
