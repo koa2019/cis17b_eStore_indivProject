@@ -11,3 +11,12 @@ delete cookies using dr. lehr's program and tutorialspoint.com/javascript/javasc
 
 login.html sets the cookie with user's info and store.html reads the
 cookie and creates a global instance of User and Store objects.
+
+
+
+To-Do:
+
+* add cart array to cookies on login?
+* login.html submit button should open store.html
+* add signup.html
+* convert admin.cpp to admin.jss
